@@ -1,0 +1,67 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #dedede;
+
+    
+}
+.container{
+    border-radius: 20px;
+    background: #dedede;
+    box-shadow:  5px 5px 10px #c6c6c6,
+                -5px -5px 10px #f6f6f6;
+    padding: 2rem;
+}
+h4{
+    text-align: center;
+    font-size: 2rem;
+    margin: 10px auto;
+}
+textarea{
+    width: 100%;
+    border: 0;
+    border-radius: 20px;
+    background: #dedede;
+    box-shadow:  inset 5px 5px 10px #c6c6c6,
+                inset -5px -5px 10px #f6f6f6;
+    padding: 2rem;
+    outline:green, solid, 5px,;
+    font-size: 1.3rem;
+    color: rgb(5, 119, 123);
+}
+#listen{
+    margin: 1.2rem auto;
+    border: 0;
+    background-color: rgba(12, 184, 12, 0.763);
+    color: white;
+    width: 10rem;
+    border-radius: 10px;
+    background: #50e0de;
+    box-shadow:  5px 5px 10px #c6c6c6,
+                -5px -5px 10px #f6f6f6;
+    padding: 1rem;
+    font-size: 1.3rem;
+
+}
+button{
+    border: 0;
+    margin-right: 2rem;
+    padding: 1rem;
+    box-shadow: 0px 0px 8px rgba(202, 246, 255, 0.427);
+    border-radius: 0.6rem;
+}
+#menu{
+    margin-top: 1.5rem;
+    text-align: center;
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h4>Text to Speech</h4>
+        <textarea name="" id="content" cols="50" rows="10"></textarea> <br>
+        <div id="menu">
+            <button>Pause</button>
+            <button>Resume</button>
+            <button>Speed 1</button>
+            <button>Speed 2</button>
+            <button>Speed 3</button>
+            <button id="end">End</button>
+        </div>
+        <button type="button" onclick="speech()" id="listen">Listen</button>
+        
+    </div>
+    
+    
+
+    <script>
+        
+
+        function speech(e){
+            // const synth = window.speechSynthesis;
+            // const voices = synth.getVoices();
+            const text = document.getElementById('content').value
+            const end = document.getElementById('end')
+            
+            const speech = new SpeechSynthesisUtterance(text)
+            speech.pitch = 20
+            speech.rate = 0.7
+
+            end.addEventListener('click',function(){
+
+                speech.addEventListener('pause',(event)=>{
+                    console.log('Paused')
+                })
+                alert('Clicked')
+            })
+
+            // synth.speak(speech)
+            window.speechSynthesis.speak(speech)
+        }
+    </script>
+</body>
+</html>
