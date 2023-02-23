@@ -12,43 +12,61 @@
         <h4>Text to Speech</h4>
         <textarea name="" id="content" cols="50" rows="10"></textarea> <br>
         <div id="menu">
-            <button>Pause</button>
-            <button>Resume</button>
-            <button>Speed 1</button>
-            <button>Speed 2</button>
-            <button>Speed 3</button>
-            <button id="end">End</button>
+            <button id="pause">Pause</button>
+            <button id="clear">Clear</button>
+            <button id="end">Cancel</button>
         </div>
-        <button type="button" onclick="speech()" id="listen">Listen</button>
+        <button type="button" id="listen">Play</button>
         
     </div>
     
-    
-
     <script>
+        const synth = window.speechSynthesis;
+        const pause = document.getElementById('pause')
+        const end = document.getElementById('end')
+        const listen = document.getElementById('listen')
+        const text = document.getElementById('content')
+        const clear = document.getElementById('clear')
+
+        listen.addEventListener('click',speech)
+
+        clear.addEventListener('click',function(){
+            synth.resume()
+            synth.cancel()
+            text.disabled = false
+            text.value = ''
+        })
         
 
-        function speech(e){
-            // const synth = window.speechSynthesis;
-            // const voices = synth.getVoices();
-            const text = document.getElementById('content').value
-            const end = document.getElementById('end')
-            
-            const speech = new SpeechSynthesisUtterance(text)
+        function speech(){
+            if(synth.pause && synth.speaking){
+                return synth.resume()
+            }
+            const speech = new SpeechSynthesisUtterance(text.value)
+            speech.addEventListener('end',function(){
+                text.disabled = false
+            })
+
+            text.disabled = true
             speech.pitch = 20
             speech.rate = 0.7
 
-            end.addEventListener('click',function(){
-
-                speech.addEventListener('pause',(event)=>{
-                    console.log('Paused')
-                })
-                alert('Clicked')
-            })
-
-            // synth.speak(speech)
-            window.speechSynthesis.speak(speech)
+            synth.speak(speech)
+            // window.speechSynthesis.speak(speech)
         }
+
+        pause.addEventListener('click',function(){
+            if(synth.speaking){
+                synth.pause()
+                text.disabled = false
+            }
+        })
+
+        end.addEventListener('click',function(){
+           synth.resume()
+           synth.cancel()
+           text.disabled = false
+        })
     </script>
 </body>
 </html>
